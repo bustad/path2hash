@@ -6,9 +6,11 @@ import base64
 import datetime
 from pathlib import Path
 
-p = argparse.ArgumentParser(description='Write SHA-512 hash, creation time, modification time, file size and file path for each file in a directory tree to a text file.')
-p.add_argument('path', nargs='+', help='a file path')
-p.add_argument('-o', '--output', required=True)
+p = argparse.ArgumentParser(description='Write SHA-512 hash, creation time, modification time, file size and file path for each file in one or more directory tree to a text file.')
+p.add_argument('path', nargs='+', help='One or more file paths.')
+p.add_argument('-o', '--output', required=True, help='Output text file.')
+p.add_argument('-ctime', action='store_true', help='Write creation time.')
+p.add_argument('-mtime', action='store_true', help='Write modification time.')
 args = p.parse_args()
 
 for k in args.path:
@@ -34,13 +36,15 @@ with open(args.output, "w", encoding="utf-8") as fo:
 
                 stats = Path(filename).stat()
 
-                s = datetime.datetime.fromtimestamp(stats.st_ctime).isoformat()
-                print(s, end=" ")
-                fo.write(s + "\t")
+                if args.ctime:
+                    s = datetime.datetime.fromtimestamp(stats.st_ctime).isoformat()
+                    print(s, end=" ")
+                    fo.write(s + "\t")
 
-                s = datetime.datetime.fromtimestamp(stats.st_mtime).isoformat()
-                print(s, end=" ")
-                fo.write(s + "\t")
+                if args.mtime:
+                    s = datetime.datetime.fromtimestamp(stats.st_mtime).isoformat()
+                    print(s, end=" ")
+                    fo.write(s + "\t")
 
                 s = str(stats.st_size)
                 print(s, end=" ")
@@ -48,3 +52,8 @@ with open(args.output, "w", encoding="utf-8") as fo:
 
                 print(filename[3:])
                 fo.write(filename[3:] + "\n")
+
+# diff <(this_command) <(that_command)
+# The <(COMMAND) sequence expands to the name of a pseudo-file (such as /dev/fd/63) from which you can read the output of the command.
+
+# grep -E '^[0-9]+$' file | diff file -
