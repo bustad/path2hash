@@ -28,8 +28,6 @@ with open(args.output, "w", encoding="utf-8") as fo:
 
                 with open(filename, 'rb', buffering=0) as fi:
                     digest = hashlib.file_digest(fi, 'sha512')
-                # print(digest.hexdigest(), end=" ")
-                # print(base64.b64encode(digest.digest()).decode('utf-8'), end=" ")
                 s = base64.b85encode(digest.digest()).decode('utf-8')
                 print(s, end=" ")
                 fo.write(s + "\t")
@@ -52,8 +50,3 @@ with open(args.output, "w", encoding="utf-8") as fo:
 
                 print(filename[3:])
                 fo.write(filename[3:] + "\n")
-
-# diff <(this_command) <(that_command)
-# The <(COMMAND) sequence expands to the name of a pseudo-file (such as /dev/fd/63) from which you can read the output of the command.
-
-# grep -E '^[0-9]+$' file | diff file -
