@@ -17,6 +17,8 @@ The script `path2hash.py` is written to be run from Windows (install from [https
 python path2hash.py [-h] -o OUTPUT [-ctime] [-mtime] path [path ...]
 
 python path2hash.py -o test.txt "D:\test" "D:\test2"
+
+python path2hash.py -o test.txt -ctime -mtime "D:\test" "D:\test2"
 ```
 Now using base85 to write each hash to a text file. Could also use base64 or hex.
 
