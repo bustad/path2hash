@@ -17,9 +17,13 @@ du -sh -- */ | sort -rh  # Directories only
 The script `path2hash.py` is written to be run from Windows (install from [https://www.python.org/](https://www.python.org/)) so that the Windows paths are saved to the text files. Usage:
 ```
 python path2hash.py [-h] -o OUTPUT [-ctime] [-mtime] path [path ...]
+# -h prints help.
+# -o writes output to the specified text file.
+# -ctime includes creation time.
+# -mtime includes modification time.
 
+# Examples:
 python path2hash.py -o test.txt "D:\test" "D:\test2"
-
 python path2hash.py -o test.txt -ctime -mtime "D:\test" "D:\test2"
 ```
 Now using base85 to write each hash to a text file. Could also use base64 or hex.
