@@ -7,6 +7,7 @@ To save space one can run the following in WSL to list folders that take up the 
 du -sh -- *  | sort -rh  # Files and directories, or
 du -sh -- */ | sort -rh  # Directories only
 ```
+(A [double-dash](https://www.tutorialspoint.com/what-does-a-double-dash-in-shell-commands-mean) is a syntax used in shell commands to signify end of command options and beginning of positional arguments.)
 <!--- https://unix.stackexchange.com/questions/106330/sort-all-directories-based-on-their-size ---> 
 
 ## Generate text files with hashes
