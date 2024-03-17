@@ -10,6 +10,8 @@ du -sh -- */ | sort -rh  # Directories only
 
 ## Generate text files with hashes
 
+The script `path2hash` is written to be run from Windows so that the Windows paths are saved to the text files.
+
 Now using base85 to write each hash to a text file. Could also use base64 or hex.
 
 ## Use tools to compare text files to find new and changed files and to verify file contents
