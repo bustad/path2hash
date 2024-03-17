@@ -1,6 +1,6 @@
 # path2hash
 
-These are utilities to help clean-up disk space, backup important files, find new files and changed files, and to verify written files.
+These are utilities to help clean up disk space, backup important files, find new files and changed files, and to verify written files.
 
 ## Disk clean-up
 
