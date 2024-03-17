@@ -12,9 +12,11 @@ du -sh -- */ | sort -rh  # Directories only
 
 ## Generate text files with hashes
 
-The script `path2hash` is written to be run from Windows (install from [https://www.python.org/](https://www.python.org/)) so that the Windows paths are saved to the text files. Usage:
+The script `path2hash.py` is written to be run from Windows (install from [https://www.python.org/](https://www.python.org/)) so that the Windows paths are saved to the text files. Usage:
 ```
 python path2hash.py [-h] -o OUTPUT [-ctime] [-mtime] path [path ...]
+
+python path2hash.py -o test.txt "D:\test" "D:\test2"
 ```
 Now using base85 to write each hash to a text file. Could also use base64 or hex.
 
