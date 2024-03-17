@@ -1,5 +1,13 @@
 # path2hash
 
+## Disk clean-up
+
+To save space one can run the following to list folders that take up the most amount of space:
+```
+du -sh -- *  | sort -rh  # Files and directories, or
+du -sh -- */ | sort -rh  # Directories only
+```
+
 ## Generate text files with hashes
 
 Now using base85 to write each hash to a text file. Could also use base64 or hex.
