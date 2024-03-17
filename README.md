@@ -1,5 +1,7 @@
 # path2hash
 
+These are utilities to help clean-up disk space, backup important files, find new files and changed files, and to verify written files.
+
 ## Disk clean-up
 
 To save space one can run [the following](https://unix.stackexchange.com/questions/106330/sort-all-directories-based-on-their-size) in WSL to list folders that take up the most amount of space:
