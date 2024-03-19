@@ -26,7 +26,7 @@ python path2hash.py [-h] -o OUTPUT [-ctime] [-mtime] path [path ...]
 python path2hash.py -o test.txt "D:\test" "D:\test2"
 python path2hash.py -o test.txt -ctime -mtime "D:\test" "D:\test2"
 ```
-Now the script is using base85 to write each SHA-512 hash to a text file. One could also use base64 or hex.
+Now the script is using base85 to write each SHA-512 hash to a text file. One could also use base64 or hex. The files and folders are [sorted](https://stackoverflow.com/questions/18282370/in-what-order-does-os-walk-iterates-iterate) when the hashes are calculated.
 
 ## Use tools to compare text files to find new and changed files and to verify file contents
 

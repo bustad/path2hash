@@ -23,7 +23,8 @@ print(f"Writing output to {args.output}.\n")
 with open(args.output, "w", encoding="utf-8") as fo:
     for k in args.path:
         for path, dirs, files in os.walk(k):
-            for file in files:
+            dirs.sort()
+            for file in sorted(files):
                 filename = os.path.join(path,file)
 
                 with open(filename, 'rb', buffering=0) as fi:
