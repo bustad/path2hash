@@ -30,24 +30,24 @@ with open(args.output, "w", encoding="utf-8") as fo:
                 with open(filename, 'rb', buffering=0) as fi:
                     digest = hashlib.file_digest(fi, 'sha512')
                 s = base64.b85encode(digest.digest()).decode('utf-8')
-                print(s, end=" ")
-                fo.write(s + "\t")
+                print(s, end="")
+                fo.write(s + "")
 
                 stats = Path(filename).stat()
+
+                s = f"{str(stats.st_size):>13}"
+                print(s, end=" ")
+                fo.write(s + " ")
 
                 if args.ctime:
                     s = datetime.datetime.fromtimestamp(stats.st_ctime).isoformat()
                     print(s, end=" ")
-                    fo.write(s + "\t")
+                    fo.write(s + " ")
 
                 if args.mtime:
                     s = datetime.datetime.fromtimestamp(stats.st_mtime).isoformat()
                     print(s, end=" ")
-                    fo.write(s + "\t")
-
-                s = str(stats.st_size)
-                print(s, end=" ")
-                fo.write(s + "\t")
+                    fo.write(s + " ")
 
                 print(filename[3:])
                 fo.write(filename[3:] + "\n")
