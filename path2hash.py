@@ -23,15 +23,15 @@ print(f"Writing output to {args.output}.\n")
 with open(args.output, "w", encoding="utf-8") as fo:
     for k in args.path:
         for path, dirs, files in os.walk(k):
-            dirs.sort()
-            for file in sorted(files):
+            dirs.sort(key=str.casefold)
+            for file in sorted(files, key=str.casefold):
                 filename = os.path.join(path,file)
 
                 with open(filename, 'rb', buffering=0) as fi:
                     digest = hashlib.file_digest(fi, 'sha512')
                 s = base64.b85encode(digest.digest()).decode('utf-8')
                 print(s, end="")
-                fo.write(s + "")
+                fo.write(s)
 
                 stats = Path(filename).stat()
 
@@ -40,12 +40,12 @@ with open(args.output, "w", encoding="utf-8") as fo:
                 fo.write(s + " ")
 
                 if args.ctime:
-                    s = datetime.datetime.fromtimestamp(stats.st_ctime).isoformat()
+                    s = f"{datetime.datetime.fromtimestamp(stats.st_ctime).isoformat():<26}"
                     print(s, end=" ")
                     fo.write(s + " ")
 
                 if args.mtime:
-                    s = datetime.datetime.fromtimestamp(stats.st_mtime).isoformat()
+                    s = f"{datetime.datetime.fromtimestamp(stats.st_mtime).isoformat():<26}"
                     print(s, end=" ")
                     fo.write(s + " ")
 
