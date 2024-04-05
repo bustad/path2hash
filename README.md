@@ -46,3 +46,9 @@ An alternative is:
 ```
 cat file1 file2 file3 | diff file4 -
 ```
+Another useful command is `cut`:
+```
+cut -c LIST [FILE]
+cut -c -148,162- "Some file.txt" # An example
+```
+where LIST is made up of one range or many ranges separated by commas. Each range is one of N, N-, N-M or -M. With no FILE or when FILE is - `cut` reads standard input.
